@@ -7,8 +7,9 @@ codebase.**
 
 TENS HQ (Traversing Ecosystems Navigation & Strategy Headquarters) is a federation, not a
 monolith: five of six modules are live public repos with deployed apps today; the sixth
-(EDGE) is planned. This repo is the front door — the map, the lifecycle, and the vendored
-proof that the "federation" claim is real, not marketing.
+(EDGE) is logging-first by design — its decision-log kit is built, its calibration app
+deliberately deferred until real decisions accrue. This repo is the front door — the map,
+the lifecycle, and the vendored proof that the "federation" claim is real, not marketing.
 
 ## Why this exists
 
@@ -56,7 +57,7 @@ a not-yet-automated step. Nothing here claims data flows that don't.
 | **FMP Calculator** | Price | Produces a low/med/high fair-market-price band with every number cited — assistive, never "the" FMP | [CJud25/FMP-Calculator](https://github.com/CJud25/FMP-Calculator) | [Live app](https://fmp-calculator.streamlit.app/) |
 | **CMMC Vault** | Comply | Scores CMMC Level 2 readiness against NIST SP 800-171 — a high control count is not the same as ready | [CJud25/CMMCVault](https://github.com/CJud25/CMMCVault) | [Live app](https://cmmcvault-demo.streamlit.app/) |
 | **ROCC** (Recruiting & Outreach Control Center) | Staff | Aggregates recruiting/outreach signal by source and contract on **synthetic demo data** — scores sources and contracts, never people | [CJud25/ROCC](https://github.com/CJud25/ROCC) | [Live app](https://controlcenter.streamlit.app/) |
-| **EDGE** | Learn | *Planned.* Logs every pursue/pass decision and its factors to calibrate judgment over time — starts as a logging habit, not an app | — not started | — |
+| **EDGE** | Learn | Logs every pursue/pass call, its factors, and the analyst's decision-time confidence, so the team's judgment can be calibrated later. **Corpus before app:** the logging kit is built; the calibration read stays specified-not-built until real decisions accrue | Lives in [CJud25/ReconRadar](https://github.com/CJud25/ReconRadar) (ADR-027) | — no app by design |
 
 ## Integration contracts — how the apps actually talk to each other
 
@@ -101,7 +102,7 @@ tier's per-app resource ceiling better than one large one would.
 | | |
 |---|---|
 | **Live now** | GovCon Recompete Radar · ReconRadar · FMP Calculator · CMMC Vault (frozen demo) · ROCC (synthetic demo) |
-| **Planned** | EDGE — starts as a decision-logging habit in the pilot, before any app is built |
+| **Logging-first** | EDGE — the decision-log kit is built (schema, capture template, pilot-runbook step, boundary test); the calibration read is specified but deliberately **not** built until a real decision corpus exists |
 | **Contract shipped** | `radar-handoff/v1` (both sides) |
 | **Contract half-shipped** | `packet-fmp/v1` (consumer shipped; ReconRadar producer queued) |
 | **Contract not started** | Radar → ROCC pipeline signal |
