@@ -1,0 +1,33 @@
+{
+  "_arithmetic": "see plan Task 7 Step 1, Vector 1 (hand-computed, HALF_UP)",
+  "input": {
+    "lane": "services",
+    "labor_lines": [
+      {"occupation_code": "11150", "occupation_title": "Janitor",
+       "wd_base_rate": "18.00", "hours": "2000", "fte": "1.0"}
+    ],
+    "hw_selection": "standard",
+    "other_wd_fringe_hourly": "0",
+    "materials": "0", "odc": "0", "unallowable_subcontract": "0",
+    "indirect_rates": {"overhead_rate": "0.10", "ga_rate": "0.05",
+                       "net_proceeds_rate": "0.05", "net_proceeds_fixed": null},
+    "burden_inputs": {"suta_rate": "0.02", "suta_wage_base": "7000", "wc_rate": "0.01"},
+    "conventions": {"overhead_base": "labor", "ga_base": "tci",
+                    "net_proceeds_base": "total_cost", "fee_base": "tnc",
+                    "hours_convention": "paid", "leave_hours": "0",
+                    "hw_as_cash": false, "minimum_wage_regime": "sca_wd"},
+    "constants": {"ss_wage_base": "200000", "program_fee_rate": "0.0375",
+                  "hw_rates": {"standard": "5.55", "eo13706": "5.09",
+                               "hawaii_standard": "2.42", "hawaii_eo13706": "1.96"},
+                  "oasdi_rate": "0.062", "medicare_rate": "0.0145",
+                  "futa_rate": "0.006", "futa_wage_base": "7000"}
+  },
+  "expected": {
+    "lines": {"direct_labor": "36000.00", "hw_fringe": "11100.00",
+              "other_wd_fringe": "0.00", "payroll_burden": "3289.00",
+              "materials": "0.00", "odc": "0.00", "overhead": "5038.90",
+              "ga": "2771.40", "net_proceeds": "2909.97", "rehab_unallowable": "0.00"},
+    "total_npa_compensation": "61109.27", "fee_base": "61109.27",
+    "program_fee": "2291.60", "recommended_fmp": "63400.87"
+  }
+}

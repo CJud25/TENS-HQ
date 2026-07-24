@@ -1,0 +1,19 @@
+{
+  "kind": "packet-fmp", "version": "1.0.0", "produced_by": "ReconRadar",
+  "produced_at": "2026-07-23", "source_packet_id": "recon-demo-001", "lane": "services",
+  "contract_context": {
+    "awarding_agency": "Department of Defense", "awarding_sub_agency": "Department of the Army",
+    "naics": "561720", "psc": "S201",
+    "place_of_performance": {"county": "Okaloosa", "state": "FL"},
+    "period_of_performance": {"start": "2026-10-01", "end": "2027-09-30"},
+    "wd_number": "2015-4281", "wd_version": "24", "reference_piid": "W91ZLK-DEMO"
+  },
+  "labor_lines": [
+    {"occupation_code": "11150", "occupation_title": "Janitor",
+     "wd_base_rate": 15.48, "hours": 2080, "fte": 10, "provenance": "observed"},
+    {"occupation_code": "11210", "occupation_title": "Laborer, Grounds Maintenance",
+     "wd_base_rate": 16.22, "hours": 2080, "fte": 2, "provenance": "observed"}
+  ],
+  "hw_selection": "standard",
+  "notes": "SAMPLE handoff for the seeded custodial demo — not a live wage determination."
+}
