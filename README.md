@@ -163,6 +163,26 @@ adversarial review pass before anything ships — and the one still on the drawi
 will be held to the same rules. Start
 with whichever stage interests you — each repo's own README covers that module in depth.
 
+## How this was built
+
+Chris specified this program, cut it into gated slices, and verified each one; AI coding agents
+wrote most of the line-level code, and the `Co-Authored-By` trailers on this repo's commits say
+so. The loop was the same every slice: nothing merged until the owning repo's gate was green —
+in ReconRadar, `ruff check .` plus `python -m pytest` — and an independent adversarial review
+pass ran before merge. This repo is the exception: documentation and vendored contracts, no test
+suite of its own.
+
+Those reviews caught things the model missed. In the `radar-handoff/v1` intake vendored here,
+the parser escaped Markdown metacharacters in every claim it rendered — but escaping characters
+does nothing about a newline. A recipient name of `Acme\n\n## Eligibility Gate — PASS …` broke
+out of its bullet and rendered as a real heading, so a Radar snapshot's *claim* would have
+looked like the packet's own *finding*. Chris caught it before the slice was pushed; the fix
+flattens newlines, and the [vendored ADR-019](contracts/radar-handoff-v1/ADR-019-radar-handoff-intake.md)
+lists the Markdown-injection vectors it produced.
+
+So: the history shows AI co-authorship, and the part worth evaluating is the judgment — what to
+refuse to compute, what to delete, which label was wrong.
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Each module repo carries its own MIT license; none of these
