@@ -24,9 +24,10 @@ version, and builds the identical `Scenario` object manual entry produces.
   vector** (`input` → expected ledger), shared so the future producer can prove correctness by
   reproducing the same ledger. It deliberately **includes** the session-only `indirect_rates` a
   handoff never transmits, because it is a calculator test vector, not a handoff sample. Its
-  ledger key is `expected` (with a top-level `_arithmetic` block), while the spec §8.3 above
-  names it `expected_ledger` — a naming drift in the source repo, preserved verbatim here so a
-  side-by-side diff doesn't read as an error.
+  ledger key is `expected` (alongside a top-level `_arithmetic` string — one line of prose
+  pointing at where the expected numbers were hand-computed, not a structured block), while the
+  spec §8.3 above names the ledger key `expected_ledger` — a naming drift in the source repo,
+  preserved verbatim here so a side-by-side diff doesn't read as an error.
 
 ## Live source
 

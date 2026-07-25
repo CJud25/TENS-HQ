@@ -1,5 +1,48 @@
 # TENS HQ
 
+**Open a live app now:**
+[Find → GovCon Recompete Radar](https://govconradar.streamlit.app/) ·
+[Investigate → ReconRadar](https://reconradar.streamlit.app/) ·
+[Price → FMP Calculator](https://fmp-calculator.streamlit.app/) ·
+[Comply → CMMC Vault](https://cmmcvault-demo.streamlit.app/) ·
+[Staff → ROCC](https://controlcenter.streamlit.app/)
+
+*This repo is the front door — the map, the lifecycle, and the vendored contracts. It ships no
+app of its own; the five links above are the product.*
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://govconradar.streamlit.app/"><img src="docs/screenshots/govconradar.png" width="100%" alt="GovCon Recompete Radar — pipeline dashboard of expiring DoD cyber and IT contracts"></a><br>
+      <b>Find</b> · GovCon Recompete Radar
+    </td>
+    <td align="center" width="33%">
+      <a href="https://reconradar.streamlit.app/"><img src="docs/screenshots/reconradar.png" width="100%" alt="ReconRadar — Opportunity Packet and public-evidence tracker"></a><br>
+      <b>Investigate</b> · ReconRadar
+    </td>
+    <td align="center" width="33%">
+      <a href="https://fmp-calculator.streamlit.app/"><img src="docs/screenshots/fmp.png" width="100%" alt="FMP Calculator — fair-market-price band builder"></a><br>
+      <b>Price</b> · FMP Calculator
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://cmmcvault-demo.streamlit.app/"><img src="docs/screenshots/cmmcvault.png" width="100%" alt="CMMC Vault — NIST SP 800-171 Rev 2 self-assessment readiness dashboard"></a><br>
+      <b>Comply</b> · CMMC Vault
+    </td>
+    <td align="center" width="33%">
+      <a href="https://controlcenter.streamlit.app/"><img src="docs/screenshots/rocc.png" width="100%" alt="ROCC — executive command brief over synthetic recruiting and outreach data"></a><br>
+      <b>Staff</b> · ROCC
+    </td>
+    <td align="center" width="33%">
+      <i>Learn · EDGE — logging-first, no app by design</i>
+    </td>
+  </tr>
+</table>
+
+<sub>Screenshots captured 2026-07-25 with headless Chromium against the five deployed apps linked
+above — scaled down, not otherwise edited. Each tile is a live link.</sub>
+
 **Six small, connected modules modeling the federal-contracting capture lifecycle — find,
 investigate, price, comply, staff, learn — five shipped as live apps today, the sixth planned,
 each built to ship independently and wired together by typed contracts instead of a shared
@@ -8,8 +51,8 @@ codebase.**
 TENS HQ (Traversing Ecosystems Navigation & Strategy Headquarters) is a federation, not a
 monolith: five of six modules are live public repos with deployed apps today; the sixth
 (EDGE) is logging-first by design — its decision-log kit is built, its calibration app
-deliberately deferred until real decisions accrue. This repo is the front door — the map,
-the lifecycle, and the vendored proof that the "federation" claim is real, not marketing.
+deliberately deferred until real decisions accrue. The contracts vendored here are the proof
+that the "federation" claim is real, not marketing.
 
 ## Why this exists
 
@@ -113,11 +156,33 @@ tier's per-app resource ceiling better than one large one would.
 ## About this portfolio
 
 Built by [Chris Judkins](https://github.com/CJud25) — a self-taught Power Platform / AI-
-automation builder working in federal-contracting compliance, AI-102 certified. Every shipped module above shares the same discipline: a typed contract at
-each boundary, an honesty invariant that survives into the UI (a band, not a point estimate; a
-packet, not a score; aggregates, not people), and an adversarial review pass before anything
-ships — and the one still on the drawing board (EDGE) will be held to the same rules. Start
+automation builder working in federal-contracting compliance, AI-102 certified. Every shipped module above shares the same discipline: an honesty
+invariant that survives into the UI (a band, not a point estimate; a packet, not a score;
+aggregates, not people), a typed contract wherever two of them actually touch, and an
+adversarial review pass before anything ships — and the one still on the drawing board (EDGE)
+will be held to the same rules. Start
 with whichever stage interests you — each repo's own README covers that module in depth.
+
+## How this was built
+
+Chris specified this program, cut it into gated slices, ran the adversarial review passes, and
+wrote the fix commits; AI agents wrote most of the line-level code, and most commits here carry
+`Co-Authored-By` trailers naming the model. This repo has no CI of its own — it ships
+documentation and vendored contracts, not code. The gates live in the module repos: ReconRadar's
+runs `ruff check .`, `python -m pytest -q`, and `python scripts/validate_demo_data.py` on every
+push and pull request.
+
+The reviews found real defects. In ReconRadar's `radar-handoff/v1` intake — the contract vendored
+here — the review's security lens found that `_md`, the helper behind the Origin-section
+renderer, escaped Markdown metacharacters but did nothing about an embedded newline: the reviewer
+ran the exploit, and a Radar-supplied name broke out of its bullet and rendered as a real
+heading. `test_newline_injection_cannot_forge_markdown_structure` in ReconRadar's
+`tests/test_radar_handoff.py` locks the fix. On this repo the reviews ran *after* the text
+landed: their corrections are their own commits, sitting on top of what they fix.
+
+The history shows the AI co-authorship directly. The judgment calls — the slice boundaries, what
+to refuse to compute, what to delete, the decision to run an adversarial pass at all — are the
+part worth evaluating.
 
 ## License
 
