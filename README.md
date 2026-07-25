@@ -1,5 +1,48 @@
 # TENS HQ
 
+**Open a live app now:**
+[Find → GovCon Recompete Radar](https://govconradar.streamlit.app/) ·
+[Investigate → ReconRadar](https://reconradar.streamlit.app/) ·
+[Price → FMP Calculator](https://fmp-calculator.streamlit.app/) ·
+[Comply → CMMC Vault](https://cmmcvault-demo.streamlit.app/) ·
+[Staff → ROCC](https://controlcenter.streamlit.app/)
+
+*This repo is the front door — the map, the lifecycle, and the vendored contracts. It ships no
+app of its own; the five links above are the product.*
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://govconradar.streamlit.app/"><img src="docs/screenshots/govconradar.png" width="100%" alt="GovCon Recompete Radar — pipeline dashboard of expiring DoD cyber and IT contracts"></a><br>
+      <b>Find</b> · GovCon Recompete Radar
+    </td>
+    <td align="center" width="33%">
+      <a href="https://reconradar.streamlit.app/"><img src="docs/screenshots/reconradar.png" width="100%" alt="ReconRadar — Opportunity Packet and public-evidence tracker"></a><br>
+      <b>Investigate</b> · ReconRadar
+    </td>
+    <td align="center" width="33%">
+      <a href="https://fmp-calculator.streamlit.app/"><img src="docs/screenshots/fmp.png" width="100%" alt="FMP Calculator — fair-market-price band builder"></a><br>
+      <b>Price</b> · FMP Calculator
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://cmmcvault-demo.streamlit.app/"><img src="docs/screenshots/cmmcvault.png" width="100%" alt="CMMC Vault — NIST SP 800-171 Rev 2 self-assessment readiness dashboard"></a><br>
+      <b>Comply</b> · CMMC Vault
+    </td>
+    <td align="center" width="33%">
+      <a href="https://controlcenter.streamlit.app/"><img src="docs/screenshots/rocc.png" width="100%" alt="ROCC — executive command brief over synthetic recruiting and outreach data"></a><br>
+      <b>Staff</b> · ROCC
+    </td>
+    <td align="center" width="33%">
+      <i>Learn · EDGE — logging-first, no app by design</i>
+    </td>
+  </tr>
+</table>
+
+<sub>Screenshots captured 2026-07-25 from the five deployed apps linked above — unretouched, and
+each one is a live link.</sub>
+
 **Six small, connected modules modeling the federal-contracting capture lifecycle — find,
 investigate, price, comply, staff, learn — five shipped as live apps today, the sixth planned,
 each built to ship independently and wired together by typed contracts instead of a shared
