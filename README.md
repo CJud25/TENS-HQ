@@ -40,8 +40,8 @@ app of its own; the five links above are the product.*
   </tr>
 </table>
 
-<sub>Screenshots captured 2026-07-25 from the five deployed apps linked above — unretouched, and
-each one is a live link.</sub>
+<sub>Screenshots captured 2026-07-25 with headless Chromium against the five deployed apps linked
+above — scaled down, not otherwise edited. Each tile is a live link.</sub>
 
 **Six small, connected modules modeling the federal-contracting capture lifecycle — find,
 investigate, price, comply, staff, learn — five shipped as live apps today, the sixth planned,
