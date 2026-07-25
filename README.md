@@ -156,10 +156,11 @@ tier's per-app resource ceiling better than one large one would.
 ## About this portfolio
 
 Built by [Chris Judkins](https://github.com/CJud25) — a self-taught Power Platform / AI-
-automation builder working in federal-contracting compliance, AI-102 certified. Every shipped module above shares the same discipline: a typed contract at
-each boundary, an honesty invariant that survives into the UI (a band, not a point estimate; a
-packet, not a score; aggregates, not people), and an adversarial review pass before anything
-ships — and the one still on the drawing board (EDGE) will be held to the same rules. Start
+automation builder working in federal-contracting compliance, AI-102 certified. Every shipped module above shares the same discipline: an honesty
+invariant that survives into the UI (a band, not a point estimate; a packet, not a score;
+aggregates, not people), a typed contract wherever two of them actually touch, and an
+adversarial review pass before anything ships — and the one still on the drawing board (EDGE)
+will be held to the same rules. Start
 with whichever stage interests you — each repo's own README covers that module in depth.
 
 ## License
