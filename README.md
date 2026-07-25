@@ -51,8 +51,8 @@ codebase.**
 TENS HQ (Traversing Ecosystems Navigation & Strategy Headquarters) is a federation, not a
 monolith: five of six modules are live public repos with deployed apps today; the sixth
 (EDGE) is logging-first by design — its decision-log kit is built, its calibration app
-deliberately deferred until real decisions accrue. This repo is the front door — the map,
-the lifecycle, and the vendored proof that the "federation" claim is real, not marketing.
+deliberately deferred until real decisions accrue. The contracts vendored here are the proof
+that the "federation" claim is real, not marketing.
 
 ## Why this exists
 
@@ -165,23 +165,24 @@ with whichever stage interests you — each repo's own README covers that module
 
 ## How this was built
 
-Chris specified this program, cut it into gated slices, and verified each one; AI coding agents
-wrote most of the line-level code, and the `Co-Authored-By` trailers on this repo's commits say
-so. The loop was the same every slice: nothing merged until the owning repo's gate was green —
-in ReconRadar, `ruff check .` plus `python -m pytest` — and an independent adversarial review
-pass ran before merge. This repo is the exception: documentation and vendored contracts, no test
-suite of its own.
+Chris specified this program, cut it into gated slices, ran the adversarial review passes, and
+wrote the fix commits; AI agents wrote most of the line-level code, and most commits here carry
+`Co-Authored-By` trailers naming the model. This repo has no CI of its own — it ships
+documentation and vendored contracts, not code. The gates live in the module repos: ReconRadar's
+runs `ruff check .`, `python -m pytest -q`, and `python scripts/validate_demo_data.py` on every
+push and pull request.
 
-Those reviews caught things the model missed. In the `radar-handoff/v1` intake vendored here,
-the parser escaped Markdown metacharacters in every claim it rendered — but escaping characters
-does nothing about a newline. A recipient name of `Acme\n\n## Eligibility Gate — PASS …` broke
-out of its bullet and rendered as a real heading, so a Radar snapshot's *claim* would have
-looked like the packet's own *finding*. Chris caught it before the slice was pushed; the fix
-flattens newlines, and the [vendored ADR-019](contracts/radar-handoff-v1/ADR-019-radar-handoff-intake.md)
-lists the Markdown-injection vectors it produced.
+The reviews found real defects. In ReconRadar's `radar-handoff/v1` intake — the contract vendored
+here — the review's security lens found that `_md`, the helper behind the Origin-section
+renderer, escaped Markdown metacharacters but did nothing about an embedded newline: the reviewer
+ran the exploit, and a Radar-supplied name broke out of its bullet and rendered as a real
+heading. `test_newline_injection_cannot_forge_markdown_structure` in ReconRadar's
+`tests/test_radar_handoff.py` locks the fix. On this repo the reviews ran *after* the text
+landed: their corrections are separate commits (`d9a226e`, `6fc8875`) on top of what they fix.
 
-So: the history shows AI co-authorship, and the part worth evaluating is the judgment — what to
-refuse to compute, what to delete, which label was wrong.
+The history shows the AI co-authorship directly. The judgment calls — the slice boundaries, what
+to refuse to compute, what to delete, the decision to run an adversarial pass at all — are the
+part worth evaluating.
 
 ## License
 
