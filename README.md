@@ -178,7 +178,7 @@ renderer, escaped Markdown metacharacters but did nothing about an embedded newl
 ran the exploit, and a Radar-supplied name broke out of its bullet and rendered as a real
 heading. `test_newline_injection_cannot_forge_markdown_structure` in ReconRadar's
 `tests/test_radar_handoff.py` locks the fix. On this repo the reviews ran *after* the text
-landed: their corrections are separate commits (`d9a226e`, `6fc8875`) on top of what they fix.
+landed: their corrections are their own commits, sitting on top of what they fix.
 
 The history shows the AI co-authorship directly. The judgment calls — the slice boundaries, what
 to refuse to compute, what to delete, the decision to run an adversarial pass at all — are the
