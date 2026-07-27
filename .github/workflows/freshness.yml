@@ -1,0 +1,57 @@
+name: Live-link freshness
+
+on:
+  schedule:
+    - cron: "23 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  link-health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check live-app links
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          # A sleeping Streamlit Community Cloud app presents its wake page with
+          # HTTP 200. This verifies that each link still resolves to an app; it
+          # does not certify that the app is awake or correct.
+          mapfile -t urls < <(
+            grep -Eo 'https://[a-z0-9-]+\.streamlit\.app' README.md | sort -u
+          )
+
+          if (( ${#urls[@]} < 5 )); then
+            echo "Expected at least 5 unique Streamlit app URLs; found ${#urls[@]}."
+            exit 1
+          fi
+
+          failures=()
+          for url in "${urls[@]}"; do
+            resolved=false
+            for attempt in 1 2 3; do
+              echo "Checking ${url} (attempt ${attempt}/3)"
+              if curl -fsSL --max-time 30 -o /dev/null "$url"; then
+                resolved=true
+                break
+              fi
+              if (( attempt < 3 )); then
+                sleep 60
+              fi
+            done
+
+            if [[ "$resolved" != true ]]; then
+              failures+=("$url")
+            fi
+          done
+
+          if (( ${#failures[@]} > 0 )); then
+            echo "The following URLs failed all 3 attempts:"
+            printf '  %s\n' "${failures[@]}"
+            exit 1
+          fi
