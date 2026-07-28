@@ -165,7 +165,7 @@ with whichever stage interests you — each repo's own README covers that module
 
 ## How this was built
 
-Chris specified this program, cut it into gated slices, ran the adversarial review passes, and
+I specified this program, cut it into gated slices, ran the adversarial review passes, and
 wrote the fix commits; AI agents wrote most of the line-level code, and most commits here carry
 `Co-Authored-By` trailers naming the model. This repo ships documentation and vendored
 contracts, not code, so its only CI is a scheduled link-health check on the live-app links
