@@ -167,8 +167,9 @@ with whichever stage interests you — each repo's own README covers that module
 
 Chris specified this program, cut it into gated slices, ran the adversarial review passes, and
 wrote the fix commits; AI agents wrote most of the line-level code, and most commits here carry
-`Co-Authored-By` trailers naming the model. This repo has no CI of its own — it ships
-documentation and vendored contracts, not code. The gates live in the module repos: ReconRadar's
+`Co-Authored-By` trailers naming the model. This repo ships documentation and vendored
+contracts, not code, so its only CI is a scheduled link-health check on the live-app links
+above — an honesty tripwire, not a build gate. The code gates live in the module repos: ReconRadar's
 runs `ruff check .`, `python -m pytest -q`, and `python scripts/validate_demo_data.py` on every
 push and pull request.
 
